@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Player</title>
+    <style>
+      html * {
+        box-sizing:border-box;
+      }
+
+      .left {
+        width:600px;
+        float: left;
+      }
+      .middle {
+        width:500px;
+        float: left;
+      }
+      .right {
+        width:500px;
+        float: left;
+      }
+
+      .responsive-object {
+        position: relative;
+        padding-bottom: 67.5%;
+        height: 0;
+        margin: 10px 0;
+        overflow: hidden;
+      }
+      .responsive-object iframe,
+        .responsive-object object,
+        .responsive-object embed {
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+      }
+
+      #progress {
+        width: 100%;
+        height: 20px;
+        clear: both;
+        border: 1px solid #ddd;
+        margin: 10px 0;
+      }
+      #progress span{
+        width:0%;
+        height:18px;
+        background:red;
+        display: inline-block;
+      }
+
+      #volume {
+        width:40%;
+        height: 20px;
+        float:left;
+        border: 1px solid #ddd;
+        margin: 5px 0 10px 0;
+      }
+      #volume span{
+        width:0%;
+        height:18px;
+        background:blue;
+        display: inline-block;
+      }
+      .right {
+        width:60%;
+        float:left;
+      }
+    </style>
+    <script src='/js/utils.js'></script>
+    <script src='/js/player.js'></script>
+  </head>
+  <body>
+    <div class="controls">
+      <div class="right">
+        <a id="play">Play</a>
+        <a id="pause">Pause</a>
+        <a id="mute">Mute</a>
+        <a id="unmute">Unmute</a>
+        <span id="seconds">0</span>
+        <span id="duration"></span>
+      </div>
+      <div id="volume">
+        <span id="volumeBar"></span>
+      </div>
+
+      <div id="progress">
+        <span id="progressBar"></span>
+      </div>
+
+    </div>
+    <div class="responsive-object">
+
+      <iframe src="http://cdn.embedly.com/widgets/media.html?schema=vimeo&type=text%2Fhtml&html=http://player.vimeo.com/video/18150336" width="500" height="281" scrolling="no" frameborder="0" allowfullscreen></iframe>
+
+    </div>
+
+    <script>
+      OP.DEBUG = true;
+
+      var iframe = document.getElementsByTagName('iframe')[0];
+      var ratio = ((iframe.height/iframe.width)*100).toPrecision(4) + '%';
+      iframe.parentNode.style.paddingBottom =ratio;
+
+
+      var player = new OP.Player(document.getElementsByTagName('iframe')[0]);
+
+      _.addEvent(document.getElementById('play'), 'click', function(){
+        player.play();
+      });
+
+      _.addEvent(document.getElementById('pause'), 'click', function(){
+        player.pause();
+      });
+
+      _.addEvent(document.getElementById('mute'), 'click', function(){
+        player.mute();
+        updateVolume();
+      });
+
+      _.addEvent(document.getElementById('unmute'), 'click', function(){
+        player.unmute();
+        updateVolume();
+      });
+
+      var title = document.getElementsByTagName('title')[0];
+      player.on('play', function(){
+        _.setTextContent(title, '\u25b6 '+_.getTextContent(title));
+        console.log('play');
+      });
+
+      player.on('pause', function(){
+        _.setTextContent(title, _.getTextContent(title).substr(2));
+
+        console.log('pause');
+      });
+
+      var duration = null;
+      player.getDuration(function(value){
+        duration = value;
+        _.setTextContent(document.getElementById('duration'), value);
+      });
+
+      var progressBar = document.getElementById('progressBar');
+
+      var playProgress = function(value){
+        console.log('playProgress', value);
+        progressBar.style.width = ((value.seconds / value.duration)*100) + '%';
+        _.setTextContent(document.getElementById('seconds'), value.seconds);
+      };
+
+      player.on('playProgress', playProgress);
+
+      var progress = document.getElementById('progress');
+      _.addEvent(progress, 'click', function(e){
+        var seek = ((e.pageX-progress.offsetLeft)/progress.offsetWidth)*duration;
+        player.seekTo(seek);
+      });
+
+
+      player.on('finish', function(){
+        console.log('finish');
+      });
+
+      var volumeBar = document.getElementById('volumeBar');
+      var updateVolume = function(){
+        player.getVolume(function(value){
+          volumeBar.style.width = ((value / 100)*100) + '%';
+        });
+      }
+      var volume = document.getElementById('volume');
+      _.addEvent(volume, 'click', function(e){
+        console.log('hi')
+        console.log((e.pageX-volume.offsetLeft)/volume.offsetWidth)
+        var v = ((e.pageX-volume.offsetLeft)/volume.offsetWidth)*100;
+        player.setVolume(v);
+        updateVolume();
+      });
+      updateVolume();
+
+    </script>
+
+  </body>
+</html>
