@@ -1,0 +1,30 @@
+/* Sample Editor */
+/* Progress bars and inputs to create & edit samples */
+
+.edit-sample > div {
+	display: inline-block;
+}
+
+.progress-bar {
+	border: 1px solid #777;
+	width: 50%;
+	height: 2em;
+	background-color: #ddd; /* change to something more pleasant later */
+}
+
+.clip-line {
+	display: inline-block;
+	position: relative;
+	width: 1px;
+	height: 2em;
+	background-color: #222;
+}
+
+.drag-handle {
+	width: 1em;
+	height: 1em;
+	position: relative;
+	top: 0.5em;
+	left: -0.5em;
+	background-color: yellow;
+}
