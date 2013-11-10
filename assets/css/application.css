@@ -31,6 +31,7 @@ header {
 }
 
 
+/* Keyboard keys */
 .key { /* http://cssdeck.com/labs/apple-keyboard-via-css3 */
 	display: block;
 	color: #aaa;
@@ -66,8 +67,48 @@ header {
 	border: none;
 }
 
+@-webkit-keyframes keyboard-key-pulse-color {
+	0% {
+		background: #eff0f2;
+	}
+	100% {
+		background: #d6d7d9;
+	}
+}
+
+@-moz-keyframes keyboard-key-pulse-color {
+	0% {
+		background: #eff0f2;
+	}
+	100% {
+		background: #d6d7d9;
+	}
+}
+
+@-o-keyframes keyboard-key-pulse-color {
+	0% {
+		background: #eff0f2;
+	}
+	100% {
+		background: #d6d7d9;
+	}
+}
+
+@keyframes keyboard-key-pulse-color {
+	0% {
+		background: #eff0f2;
+	}
+	100% {
+		background: #d6d7d9;
+	}
+}
+
 .key-input:hover {
 	background: #dddee0;
+	-webkit-animation: keyboard-key-pulse-color 0.8s linear alternate infinite;
+	-moz-animation: keyboard-key-pulse-color 0.8s linear alternate infinite;
+	-o-animation: keyboard-key-pulse-color 0.8s linear alternate infinite;
+	animation: keyboard-key-pulse-color 0.8s linear alternate infinite;
 }
 
 
