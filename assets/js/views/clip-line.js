@@ -1,6 +1,10 @@
 ClipPlay.Views.ClipLine = Marionette.View.extend({
+	type: '', // 'start' or 'stop'
+	
 	initialize: function(options) {
 		this.setElement(options.el);
+		
+		this.type = options.type;
 		
 		this.initialize_drag_handles();
 	},
@@ -14,7 +18,10 @@ ClipPlay.Views.ClipLine = Marionette.View.extend({
 			containment: this.$el.parents('.progress-bar')
 		});
 		
-		this.$el.on('dragstop', this.on_clip_drag_stop);
+		var that = this;
+		this.$el.on('dragstop', function(e, ui) {
+			that.on_clip_drag_stop(e, ui);
+		});
 	},
 	
 	
@@ -25,7 +32,7 @@ ClipPlay.Views.ClipLine = Marionette.View.extend({
 	//
 	percentage_progress: function() {
 		var container = this.$el.parents('.progress-bar');
-		var position_in_pixels = this.$el.css('left');
+		var position_in_pixels = this.$el.position().left;
 		
 		var percentage = (position_in_pixels / container.width()) * 100;
 		
@@ -38,7 +45,7 @@ ClipPlay.Views.ClipLine = Marionette.View.extend({
 	// Get the number of seconds after the start of the video that is 
 	// represented by this clip line.
 	//
-	seek_point: function(options) {
+	seek_point: function() {
 		var progress = this.percentage_progress();
 		
 		return (progress * this.model.get('duration')) / 100;
@@ -46,6 +53,6 @@ ClipPlay.Views.ClipLine = Marionette.View.extend({
 	
 	
 	on_clip_drag_stop: function(e, ui) {
-		console.log('booyakacha');
+		this.model.set(this.type, this.seek_point());
 	}
 });
