@@ -62,3 +62,16 @@ var SampleEditor = SampleEditor || {};
 		return this;
 	};
 })(jQuery);
+
+
+
+// --------------------------------------------------------
+ClipPlay.Views.SampleEditor = Marionette.CollectionView.extend({
+	itemView: ClipPlay.Views.Sample,
+	
+	onRender: function() {
+		this.sample_add_view = new ClipPlay.Views.SampleAddView({
+			el: $('#add-sample')
+		});
+	}
+});

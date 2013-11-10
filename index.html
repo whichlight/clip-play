@@ -15,6 +15,13 @@
 </head>
 <body>
 	<div role="main">
+		<div id="add-sample">
+			<form action="" method="get">
+				<input type="text" placeholder="Video URL" />
+				<input type="submit" value="Add" />
+			</form>
+		</div>
+		
 		<div id="samples">
 			<div class="edit-sample js-edit-sample">
 				<div class="progress-bar">
@@ -41,12 +48,40 @@
 
 
 	<script src="/assets/js/libs/jquery-2.0.3.min.js"></script>
-	<script src="/assets/js/libs/player.js"></script>
-	<script src="/assets/js/libs/utils.js"></script>
 	<script src="/assets/js/libs/jquery-ui-1.10.3.custom.min.js"></script>
 	<script src="/assets/js/libs/jquery.embedly-3.1.1.min.js"></script>
-	<script src="/assets/js/sample-editor.js"></script>
+	<script src="/assets/js/libs/underscore-min.js"></script>
+	<script src="/assets/js/libs/backbone-min.js"></script>
+	<script src="/assets/js/libs/backbone.marionette.min.js"></script>
+	<script src="/assets/js/libs/player.js"></script>
+	<!-- <script src="/assets/js/libs/utils.js"></script> -->
+	
+	<script type="text/html" id="sample-view-template">
+		<div class="edit-sample js-edit-sample">
+			<div class="progress-bar">
+				<div class="clip-line js-clip-line js-start-position">
+					<div class="drag-handle js-drag-handle"></div>
+				</div>
+				
+				<div class="clip-line js-clip-line js-end-position">
+					<div class="drag-handle js-drag-handle"></div>
+				</div>
+			</div>
+			
+			<div>
+				<input type="text" class="js-keyboard-key" placeholder="a" />
+			</div>
+		</div>
+	</script>
+	
 	<script src="/assets/js/sample.js"></script>
+	
+	<script src="/assets/js/initialize.js"></script>
+	<script src="/assets/js/models/sample.js"></script>
+	<script src="/assets/js/collections/samples.js"></script>
+	<script src="/assets/js/views/sample-add-view.js"></script>
+	<script src="/assets/js/views/sample.js"></script>
+	<script src="/assets/js/views/sample-editor.js"></script>
 	<script src="/assets/js/app.js"></script>
 </body>
 </html>
