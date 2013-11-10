@@ -50,6 +50,16 @@ ClipPlay.Views.Sample = Marionette.ItemView.extend({
 
     on_keyboard_bind: function(){
       var keyval = this.$('.js-keyboard-key').val();
-	  this.model.set('key',keyval );
+      if (keyval != this.model.get('key')){
+        if(this.model.get('key') !=''){
+            Mousetrap.unbind(this.model.get('key'));
+        }
+	    this.model.set('key',keyval);
+        var that = this;
+        Mousetrap.bind(this.model.get('key'), function(){
+          that.model.play();
+        });
+        console.log('changed key to ' + keyval);
+      }
     }
 });
