@@ -38,13 +38,20 @@ ClipPlay.Views.Sample = Marionette.ItemView.extend({
 		this.start_clip_line = new ClipPlay.Views.ClipLine({
 			type: 'start',
 			el: this.$('.js-start-position'),
-			model: this.model
+			model: this.model,
+			sample_view: this
 		});
 
 		this.stop_clip_line = new ClipPlay.Views.ClipLine({
 			type: 'stop',
 			el: this.$('.js-end-position'),
-			model: this.model
+			model: this.model,
+			sample_view: this
+		});
+		
+		this.selected_bar = new ClipPlay.Views.SelectedBar({
+			el: this.$('.js-selected-bar'),
+			sample_view: this
 		});
 	},
 

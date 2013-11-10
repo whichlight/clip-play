@@ -9,12 +9,14 @@
 	border: 1px solid #777;
 	width: 50%;
 	height: 2em;
+	position: relative;
 	background-color: #ddd; /* change to something more pleasant later */
 }
 
 .clip-line {
 	display: inline-block;
 	position: relative;
+	z-index: 5;
 	width: 1px;
 	height: 2em;
 	background-color: #222;
@@ -26,5 +28,14 @@
 	position: relative;
 	top: 0.5em;
 	left: -1em;
+	cursor: ew-resize;
 	background-color: yellow;
+}
+
+.selected-bar {
+	width: 3em;/* testing purposes */
+	height: 2em;
+	position: absolute;
+	top: 0;
+	background-color: #4087a0;
 }
