@@ -33,7 +33,7 @@
 }
 
 .selected-bar {
-	width: 3em;/* testing purposes */
+	width: 0;
 	height: 2em;
 	position: absolute;
 	top: 0;
