@@ -19,7 +19,7 @@ ClipPlay.Models.Sample = Backbone.Model.extend({
 		if (seconds < 10) {
 			seconds = '0' + seconds;
 		}
-		console.log(minutes + ':' + seconds);
+		
 		return {
 			minutes: minutes,
 			seconds: seconds
