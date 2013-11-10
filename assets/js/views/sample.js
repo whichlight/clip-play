@@ -28,7 +28,10 @@ ClipPlay.Views.Sample = Marionette.ItemView.extend({
 			var iframe = $('<iframe/>', {
 				src: iframe_src
 			});
-			$('#video').append(iframe[0]);
+            var wrapper= document.createElement('div');
+            $(wrapper).addClass("responsive-object");
+            $(wrapper).append(iframe[0]);
+			$('#video').append(wrapper);
 			var player = new OP.Player(iframe[0]);
 			that.model.set('player', player);
 			that.model.set('iframe', iframe);
