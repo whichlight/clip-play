@@ -8,7 +8,8 @@ ClipPlay.Models.Sample = Backbone.Model.extend({
 		'player': '',
 		'iframe': '',
         'timeout' : '',
-        'thumbnail' : ''
+        'thumbnail' : '',
+        'playing' : false
 	},
     initialize: function() {
         var a = ClipPlay.Config['key_defaults'].shift();
@@ -44,6 +45,7 @@ ClipPlay.Models.Sample = Backbone.Model.extend({
 	play: function() {
         console.log('playing');
     //play then pause
+        this.set('playing',true);
         window.clearTimeout(this.get('timeout'));
         this.get('player').pause();
         this.get('player').seekTo(this.get('start'));
@@ -53,6 +55,7 @@ ClipPlay.Models.Sample = Backbone.Model.extend({
         console.log(length);
         this.set('timeout',setTimeout(function(){
           that.get('player').pause();
+          that.set('playing',false);
         }, length*1000 ));
 	}
 });

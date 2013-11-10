@@ -13,8 +13,8 @@ ClipPlay.Views.Sample = Marionette.ItemView.extend({
 
     initialize: function(options){
         this.collection = options.collection;
-
         this.listenTo(this.model, 'change:key', this.key_bind);
+        this.listenTo(this.model, 'change:playing', this.show_clip);
         this.key_bind();
     },
 
@@ -31,9 +31,9 @@ ClipPlay.Views.Sample = Marionette.ItemView.extend({
 				src: iframe_src,
 				id: 'video-sample-' + that.model.cid
 			});
-            var wrapper= document.createElement('div');
-            $(wrapper).addClass("responsive-object");
+            var wrapper= document.createElement('span');
             $(wrapper).append(iframe[0]);
+            $(wrapper).addClass("responsive-object");
 			$('#video').append(wrapper);
 			var player = new OP.Player(iframe[0]);
 			that.model.set('player', player);
@@ -47,7 +47,6 @@ ClipPlay.Views.Sample = Marionette.ItemView.extend({
             img_resize+=new_height;
 
             that.model.set('thumbnail', img_resize);
-
             window.BOKASHAKA = that.model;
 			player.getDuration(function(value) {
 				that.model.set('duration', value);
@@ -111,5 +110,17 @@ ClipPlay.Views.Sample = Marionette.ItemView.extend({
 		}, 500, function() {
 			Marionette.View.prototype.close.call(that, arguments);
 		});
-	}
+	},
+
+    show_clip: function(){
+        var isPlaying = this.model.get('playing');
+        console.log('playing :' + isPlaying);
+        var $iframe_video = $('#video-sample-' + this.model.cid);
+        if(isPlaying){
+            $iframe_video.css({'z-index':10});
+        }
+        if(!isPlaying){
+            $iframe_video.css({'z-index':-10});
+        }
+    }
 });
