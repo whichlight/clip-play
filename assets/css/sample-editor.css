@@ -27,18 +27,18 @@
 	width: 2em;
 	height: 1em;
 	position: relative;
-	top: 0.5em;
+	top: 1em;
 	left: -1em;
 	cursor: ew-resize;
 	background-color: yellow;
 }
 
 .start-drag-handle {
-	top: 0.4em;
+	left: -2em;
 }
 
 .stop-drag-handle {
-	top: 1.6em;
+	left: 0.05em;
 }
 
 .selected-bar {
