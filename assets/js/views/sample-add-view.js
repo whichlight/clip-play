@@ -1,8 +1,7 @@
 ClipPlay.Views.SampleAddView = Marionette.View.extend({
 	// Copied from
-	// http://daringfireball.net/2010/07/improved_regex_for_matching_urls
-	// http://stackoverflow.com/questions/6927719/url-regex-does-not-work-in-javascript
-	url_matcher: /\b((?:[a-z][\w-]+:(?:\/{1,3}|[a-z0-9%])|www\d{0,3}[.]|[a-z0-9.\-]+[.][a-z]{2,4}\/)(?:[^\s()<>]+|\(([^\s()<>]+|(\([^\s()<>]+\)))*\))+(?:\(([^\s()<>]+|(\([^\s()<>]+\)))*\)|[^\s`!()\[\]{};:'".,<>?«»“”‘’]))/i,
+	// http://stackoverflow.com/a/10430654
+	url_matcher: /(http|https):\/\/(\w+:{0,1}\w*@)?(\S+)(:[0-9]+)?(\/|\/([\w#!:.?+=&%@!\-\/]))?/,
 	
 	events: {
 		'click .js-create-sample': 'on_sample_add'
