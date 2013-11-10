@@ -5,18 +5,19 @@ ClipPlay.Views.Sample = Marionette.ItemView.extend({
         'click .js-remove-sample' : 'remove_sample'
 	},
 
-	onRender: function() {
-		this.initialize_player();
-		this.initialize_clip_lines();
-        this.$('.js-keyboard-key').val(this.model.get('key'));
-	},
-
     initialize: function(options){
         this.collection = options.collection;
 
         this.listenTo(this.model, 'change:key', this.key_bind);
         this.key_bind();
+        this.listenTo(this.model, 'change:thumbnail', this.render_thumbnail);
     },
+
+	onRender: function() {
+		this.initialize_player();
+		this.initialize_clip_lines();
+        this.$('.js-keyboard-key').val(this.model.get('key'));
+	},
 
 	initialize_player: function() {
 		var that = this;
@@ -75,6 +76,10 @@ ClipPlay.Views.Sample = Marionette.ItemView.extend({
 			model: this.model,
 			sample_view: this
 		});
+	},
+
+	render_thumbnail: function() {
+		this.$('.js-thumbnail').html('<img src="' + this.model.get('thumbnail') + '" alt="thumbnail" class="thumbnail-image" />');
 	},
 
     on_keyboard_change: function(){
