@@ -3,7 +3,7 @@ ClipPlay.Views.Sample = Marionette.ItemView.extend({
 	
 	onRender: function() {
 		this.initialize_player();
-		this.initialize_clip_drag_handles();
+		this.initialize_clip_lines();
 	},
 	
 	
@@ -27,21 +27,15 @@ ClipPlay.Views.Sample = Marionette.ItemView.extend({
 	},
 	
 	
-	initialize_clip_drag_handles: function() {
-		var $clip_line = this.$('.js-clip-line');
-		
-		$clip_line.draggable({
-			axis: 'x',
-			handle: '.js-drag-handle',
-			scroll: false,
-			containment: $clip_line.parents('.progress-bar')
+	initialize_clip_lines: function() {
+		this.start_clip_line = new ClipPlay.Views.ClipLine({
+			el: this.$('.js-start-position'),
+			model: this.model
 		});
 		
-		$clip_line.on('dragstop', this.on_clip_drag_stop);
-	},
-	
-	
-	on_clip_drag_stop: function(e, ui) {
-		console.log('booyakacha');
+		this.end_clip_line = new ClipPlay.Views.ClipLine({
+			el: this.$('.js-end-position'),
+			model: this.model
+		});
 	}
 });
