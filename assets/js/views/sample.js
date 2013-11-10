@@ -53,7 +53,7 @@ ClipPlay.Views.Sample = Marionette.ItemView.extend({
 			model: this.model,
 			sample_view: this
 		});
-		
+
 		this.selected_bar = new ClipPlay.Views.SelectedBar({
 			el: this.$('.js-selected-bar'),
 			model: this.model,
@@ -64,6 +64,7 @@ ClipPlay.Views.Sample = Marionette.ItemView.extend({
     on_keyboard_change: function(){
       var keyval = this.$('.js-keyboard-key').val();
       if (keyval != this.model.get('key')){
+        Mousetrap.unbind(this.model.get('key'));
 	    this.model.set('key',keyval);
         console.log('changed key to ' + keyval);
       }
