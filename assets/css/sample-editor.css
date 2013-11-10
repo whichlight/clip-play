@@ -3,6 +3,7 @@
 
 .edit-sample {
 	margin: 0.4em 0;
+    width:1000px;
 }
 
 .edit-sample > div {
@@ -41,7 +42,7 @@
 	color: #414141;
 	text-shadow: 0 1px 2px #f2f400;
 	background-color: #dfe100;
-	
+
 	background: #e5e500; /* Old browsers */
 	background: -moz-linear-gradient(top,  #e5e500 0%, #dfe100 100%); /* FF3.6+ */
 	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#e5e500), color-stop(100%,#dfe100)); /* Chrome,Safari4+ */

@@ -1,7 +1,8 @@
 ClipPlay.Views.Sample = Marionette.ItemView.extend({
 	template: '#sample-view-template',
 	events: {
-		'blur .js-keyboard-key': 'on_keyboard_change'
+		'blur .js-keyboard-key': 'on_keyboard_change',
+        'click .js-remove-sample' : 'remove_sample'
 	},
 
 	onRender: function() {
@@ -76,5 +77,9 @@ ClipPlay.Views.Sample = Marionette.ItemView.extend({
       Mousetrap.bind(this.model.get('key'), function(){
         that.model.play();
       });
+    },
+
+    remove_sample: function(){
+        console.log('removed sample');
     }
 });
