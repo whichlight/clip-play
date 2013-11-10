@@ -23,10 +23,14 @@ header {
 
 
 footer {
-	position: absolute;
-	bottom: 1em;
+	position: fixed;
+	bottom: 0;
+	z-index: 6;
 	font-size: 13px;
 	font-family: 'Lucida Grande', Helvetica, sans-serif;
+	background: url('../images/background.png') repeat;
+	padding: 1em 0;
+	width: 100%;
 }
 
 
