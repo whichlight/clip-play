@@ -3,12 +3,13 @@
 
 .edit-sample > div {
 	display: inline-block;
+	vertical-align: middle;
 }
 
 .progress-bar {
 	border: 1px solid #777;
 	width: 50%;
-	height: 2em;
+	height: 3em;
 	position: relative;
 	background-color: #ddd; /* change to something more pleasant later */
 }
@@ -38,4 +39,10 @@
 	position: absolute;
 	top: 0;
 	background-color: #4087a0;
+}
+
+
+/* Key input */
+.edit-sample .key-input {
+	margin-top: 0.1em;
 }
