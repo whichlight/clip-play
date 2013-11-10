@@ -22,6 +22,29 @@ header {
 }
 
 
+footer {
+	position: absolute;
+	bottom: 1em;
+	font-size: 13px;
+	font-family: 'Lucida Grande', Helvetica, sans-serif;
+}
+
+
+
+/* . Links . */
+a {
+	color: #2f8dae;
+}
+
+a:hover {
+	color: #2a7d9a;
+}
+
+a:active {
+	color: #246c86;
+}
+
+
 
 /* . Inputs . */
 .url-input {
