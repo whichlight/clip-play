@@ -11,7 +11,9 @@ ClipPlay.Views.Sample = Marionette.ItemView.extend({
         this.$('.js-keyboard-key').val(this.model.get('key'));
 	},
 
-    initialize: function(){
+    initialize: function(options){
+        this.collection = options.collection;
+        
         this.listenTo(this.model, 'change:key', this.key_bind);
         this.key_bind();
     },
@@ -81,6 +83,16 @@ ClipPlay.Views.Sample = Marionette.ItemView.extend({
     },
 
     remove_sample: function(){
-        console.log('removed sample');
-    }
+        this.collection.remove(this.model);
+    },
+
+	close: function() {
+		var that = this;
+		this.$el.animate({
+			height: 0,
+			opacity: 0
+		}, 500, function() {
+			Marionette.View.prototype.close.call(that, arguments);
+		});
+	}
 });
