@@ -4,14 +4,16 @@ ClipPlay.App = new Marionette.Application();
 
 ClipPlay.App.addInitializer(function(options) {
 	var samples_collection = new ClipPlay.Collections.Samples();
-    window.SAMPLES = samples_collection;
 	var sample_editor_view = new ClipPlay.Views.SampleEditor({
 		collection: samples_collection
 	});
 	sample_editor_view.render();
 	$('#samples').append(sample_editor_view.$el);
 
+
     //just to have something loaded for debugging
+    ClipPlay.Config = {};
+    ClipPlay.Config['key_defaults'] = ['a','s','d','f','g','h','j','k','l'];
     samples_collection.add({url:"https://vimeo.com/18150336"});
 });
 
