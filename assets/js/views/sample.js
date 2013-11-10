@@ -1,5 +1,8 @@
 ClipPlay.Views.Sample = Marionette.ItemView.extend({
 	template: '#sample-view-template',
+	events: {
+		'blur .js-keyboard-key': 'on_keyboard_bind'
+	},
 
 	onRender: function() {
 		this.initialize_player();
@@ -21,10 +24,10 @@ ClipPlay.Views.Sample = Marionette.ItemView.extend({
 			});
 			$('#video').append(iframe[0]);
 			var player = new OP.Player(iframe[0]);
-            window.BOKASHAKA = that;
 			that.model.set('player', player);
 			that.model.set('iframe', iframe);
 
+            window.BOKASHAKA = that.model;
 			player.getDuration(function(value) {
 				that.model.set('duration', value);
 			});
@@ -43,5 +46,10 @@ ClipPlay.Views.Sample = Marionette.ItemView.extend({
 			el: this.$('.js-end-position'),
 			model: this.model
 		});
-	}
+	},
+
+    on_keyboard_bind: function(){
+      var keyval = this.$('.js-keyboard-key').val();
+	  this.model.set('key',keyval );
+    }
 });

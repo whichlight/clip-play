@@ -10,6 +10,9 @@ ClipPlay.App.addInitializer(function(options) {
 	});
 	sample_editor_view.render();
 	$('#samples').append(sample_editor_view.$el);
+
+    //just to have something loaded for debugging
+    samples_collection.add({url:"https://vimeo.com/18150336"});
 });
 
 
