@@ -4,12 +4,19 @@ ClipPlay.Views.SampleAddView = Marionette.View.extend({
 	url_matcher: /(http|https):\/\/(\w+:{0,1}\w*@)?(\S+)(:[0-9]+)?(\/|\/([\w#!:.?+=&%@!\-\/]))?/,
 	
 	events: {
-		'click .js-create-sample': 'on_sample_add'
+		'click .js-create-sample': 'on_sample_add',
+		'submit .js-add-sample-form': 'hijack_form'
 	},
 	
 	initialize: function(options) {
 		this.setElement(options.el);
 		this.$input = this.$('.js-sample-url');
+	},
+	
+	hijack_form: function() {
+		this.on_sample_add();
+		
+		return false;
 	},
 	
 	add_sample_to_collection: function() {
