@@ -16,13 +16,12 @@ ClipPlay.Views.Sample = Marionette.ItemView.extend({
 			var src = encodeURIComponent($(f)[0].src);
 			var schema = data.provider_name.toLowerCase();
 			var iframe_src= BASE_IFRAME +"?schema="+schema+"&type=text%2Fhtml&html="+src;
-            console.log(iframe_src);
 			var iframe = $('<iframe/>', {
 				src: iframe_src
 			});
-            console.log(iframe[0]);
 			$('#video').append(iframe[0]);
 			var player = new OP.Player(iframe[0]);
+            window.player = player;
 			that.model.set('player', player);
 			that.model.set('iframe', iframe);
 
