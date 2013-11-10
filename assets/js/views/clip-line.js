@@ -48,6 +48,15 @@ ClipPlay.Views.ClipLine = Marionette.View.extend({
 		  this.$el.css('left', this.model.get('stop') + 'px');
         }
     },
+    
+    
+    render_seek_point: function() {
+    	var seconds = this.model.get(this.type);
+    	var percentage_progress = (seconds * 100) / this.model.get('duration');
+    	console.log((percentage_progress * this.$el.parents('.progress-bar').width()) / 100);
+    	this.$el.css('left', percentage_progress + '%');
+    },
+    
 
 	render_time: function() {
 		var time;
@@ -102,6 +111,7 @@ ClipPlay.Views.ClipLine = Marionette.View.extend({
 
 	on_duration_change: function() {
 		this.initialize_time_values();
+// 		this.render_seek_point();
 		this.trigger_seek_point_change();
 	},
 
