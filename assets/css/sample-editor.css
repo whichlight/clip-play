@@ -7,11 +7,13 @@
 }
 
 .progress-bar {
-	border: 1px solid #777;
+	border: 1px solid #b9b9b9;
 	width: 90%;
 	height: 3em;
 	position: relative;
-	background-color: #ddd; /* change to something more pleasant later */
+	background-color: #ddd;
+	-webkit-box-shadow: inset 0px 1px 3px 0px rgba(0, 0, 0, 0.15);
+	box-shadow: inset 0px 1px 3px 0px rgba(0, 0, 0, 0.15);
 }
 
 .clip-line {
