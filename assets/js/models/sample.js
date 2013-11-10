@@ -45,11 +45,12 @@ ClipPlay.Models.Sample = Backbone.Model.extend({
 	play: function() {
         console.log('playing');
     //play then pause
-        this.set('playing',true);
         window.clearTimeout(this.get('timeout'));
+        this.set('playing',false);
         this.get('player').pause();
         this.get('player').seekTo(this.get('start'));
         this.get('player').play();
+        this.set('playing',true);
         var that = this;
         var length = Math.abs(this.get('stop') - this.get('start'));
         console.log(length);

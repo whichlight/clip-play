@@ -119,13 +119,22 @@ ClipPlay.Views.Sample = Marionette.ItemView.extend({
 
     show_clip: function(){
         var isPlaying = this.model.get('playing');
-        console.log('playing :' + isPlaying);
         var $iframe_video = $('#video-sample-' + this.model.cid);
         if(isPlaying){
+            var $frames = $('iframe');
+            $frames.each(function(k,v){$(v).css({'z-index':-10})})
             $iframe_video.css({'z-index':10});
         }
         if(!isPlaying){
             $iframe_video.css({'z-index':-10});
+
+            //if any others are playing, show them
+            this.collection.each(function(sample){
+                if(sample.get('playing')){
+                    var $iframe = $('#video-sample-' + sample.cid);
+                    $iframe.css({'z-index':10});
+                }
+            });
         }
     }
 });
