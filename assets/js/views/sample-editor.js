@@ -1,5 +1,10 @@
 ClipPlay.Views.SampleEditor = Marionette.CollectionView.extend({
 	itemView: ClipPlay.Views.Sample,
+	itemViewOptions: function(model, index) {
+		return {
+			collection: this.collection
+		};
+	},
 	
 	onRender: function() {
 		// Initialize view for adding new samples

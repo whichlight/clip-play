@@ -11,7 +11,9 @@ ClipPlay.Views.Sample = Marionette.ItemView.extend({
         this.$('.js-keyboard-key').val(this.model.get('key'));
 	},
 
-    initialize: function(){
+    initialize: function(options){
+        this.collection = options.collection;
+        
         this.listenTo(this.model, 'change:key', this.key_bind);
         this.key_bind();
     },
@@ -26,7 +28,8 @@ ClipPlay.Views.Sample = Marionette.ItemView.extend({
 			var schema = data.provider_name.toLowerCase();
 			var iframe_src= BASE_IFRAME +"?schema="+schema+"&type=text%2Fhtml&html="+src;
 			var iframe = $('<iframe/>', {
-				src: iframe_src
+				src: iframe_src,
+				id: 'video-sample-' + that.model.cid
 			});
 			$('#video').append(iframe[0]);
 			var player = new OP.Player(iframe[0]);
@@ -81,6 +84,21 @@ ClipPlay.Views.Sample = Marionette.ItemView.extend({
     },
 
     remove_sample: function(){
-        console.log('removed sample');
-    }
+        this.collection.remove(this.model);
+        
+        var $iframe_video = $('#video-sample-' + this.model.cid);
+        $iframe_video.fadeOut(400, function() {
+        	$iframe_video.remove();
+        });
+    },
+
+	close: function() {
+		var that = this;
+		this.$el.animate({
+			height: 0,
+			opacity: 0
+		}, 500, function() {
+			Marionette.View.prototype.close.call(that, arguments);
+		});
+	}
 });
