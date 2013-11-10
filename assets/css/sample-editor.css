@@ -21,10 +21,10 @@
 }
 
 .drag-handle {
-	width: 1em;
+	width: 2em;
 	height: 1em;
 	position: relative;
 	top: 0.5em;
-	left: -0.5em;
+	left: -1em;
 	background-color: yellow;
 }
