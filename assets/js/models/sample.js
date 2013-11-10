@@ -1,8 +1,8 @@
 ClipPlay.Models.Sample = Backbone.Model.extend({
 	defaults: {
 		'url': '',
-		'start': '3',
-		'stop': '4',
+		'start': 3,
+		'stop': 4,
 		'duration': '',
 		'key': '',
 		'player': '',

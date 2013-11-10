@@ -14,7 +14,7 @@ ClipPlay.App.addInitializer(function(options) {
     //just to have something loaded for debugging
     ClipPlay.Config = {};
     ClipPlay.Config['key_defaults'] = ['a','s','d','f','g','h','j','k','l'];
-    samples_collection.add({url:"https://vimeo.com/18150336"});
+    samples_collection.add({url:"https://vimeo.com/18150336", start : 20, stop: 22});
 });
 
 
