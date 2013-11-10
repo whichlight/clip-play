@@ -6,9 +6,12 @@ ClipPlay.Views.ClipLine = Marionette.View.extend({
 		
 		this.type = options.type;
 		
-		this.listenTo(this.model, 'change:duration', this.initialize_time_values);
+		this.sample_view = options.sample_view;
+		
+		this.listenTo(this.model, 'change:duration', this.on_duration_change);
 		var start_or_stop = this.type;
-		this.listenTo(this.model, 'change:' + start_or_stop, this.render_time);
+		this.listenTo(this.model, 'change:' + start_or_stop, this.on_start_or_stop_change);
+		this.listenTo(this.sample_view, 'change:position:selected-bar', this.on_selected_bar_position_change);
 		
 		this.initialize_drag_handles();
 	},
@@ -19,7 +22,7 @@ ClipPlay.Views.ClipLine = Marionette.View.extend({
 			axis: 'x',
 			handle: '.js-drag-handle',
 			scroll: false,
-			containment: this.$el.parents('.progress-bar')
+			containment: 'parent'
 		});
 		
 		var that = this;
@@ -84,5 +87,36 @@ ClipPlay.Views.ClipLine = Marionette.View.extend({
 	
 	on_clip_drag: function(e, ui) {
 		this.set_seek_point();
+	},
+	
+	
+	on_duration_change: function() {
+		this.initialize_time_values();
+		this.trigger_seek_point_change();
+	},
+	
+	
+	on_start_or_stop_change: function() {
+		this.render_time();
+		this.trigger_seek_point_change();
+	},
+	
+	
+	on_selected_bar_position_change: function(params) {
+		if (this.type === 'start') {
+			this.$el.css('left', params.position + 'px');
+		}
+		else if (this.type === 'stop') {
+			var left_position = params.position + params.width;
+			this.$el.css('left', left_position + 'px');
+		}
+	},
+	
+	
+	trigger_seek_point_change: function() {
+		var start_or_stop = this.type;
+		this.sample_view.trigger('change:seek:clip-line-' + start_or_stop, {
+			position: this.$el.position().left
+		});
 	}
 });
