@@ -46,7 +46,7 @@ ClipPlay.Views.Sample = Marionette.ItemView.extend({
 			model: this.model
 		});
 
-		this.end_clip_line = new ClipPlay.Views.ClipLine({
+		this.stop_clip_line = new ClipPlay.Views.ClipLine({
 			type: 'stop',
 			el: this.$('.js-end-position'),
 			model: this.model
