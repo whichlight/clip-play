@@ -26,3 +26,55 @@ header {
 #samples {
 	margin: 3em 2em;
 }
+
+
+/* . Buttons . */
+.button {
+	border-width: 1px;
+	border-style: solid;
+	cursor: pointer;
+	padding: 0.05em 0.4em 0.2em;
+	position: relative;
+	top: -0.07em;
+	-webkit-border-radius: 3px;
+	border-radius: 3px;
+	-webkit-box-shadow:  0px 4px 1px 0px rgba(40, 150, 44, 1);
+	box-shadow:  0px 4px 1px 0px rgba(40, 150, 44, 1);
+	-webkit-transition: all 150ms linear;
+	-moz-transition: all 150ms linear;
+	-o-transition: all 150ms linear;
+	-ms-transition: all 150ms linear;
+	transition: all 150ms linear;
+}
+
+.button:active {
+	top: 0;
+	-webkit-box-shadow:  0px 0px 1px 0px rgba(40, 150, 44, 1);
+	box-shadow:  0px 0px 1px 0px rgba(40, 150, 44, 1);
+}
+
+.button:focus {
+	outline: none;
+}
+
+.button.green {
+	background-color: #34bf39;
+	border-color: #2faf34;
+	color: #eee;
+	text-shadow: 0px 1px 2px rgba(0,0,0,0.9);
+}
+
+.button.green:hover {
+	background-color: #39d740;
+	color: #fff;
+}
+
+.button.green:active {
+	background-color: #2ea732;
+	color: #ddd;
+}
+
+.button.green.large {
+	font-size: 2em;
+	line-height: 1;
+}
