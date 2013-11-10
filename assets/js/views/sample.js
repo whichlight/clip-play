@@ -13,7 +13,7 @@ ClipPlay.Views.Sample = Marionette.ItemView.extend({
 
     initialize: function(options){
         this.collection = options.collection;
-        
+
         this.listenTo(this.model, 'change:key', this.key_bind);
         this.key_bind();
     },
@@ -38,7 +38,15 @@ ClipPlay.Views.Sample = Marionette.ItemView.extend({
 			var player = new OP.Player(iframe[0]);
 			that.model.set('player', player);
 			that.model.set('iframe', iframe);
-            that.model.set('thumbnail', data.thumbnail_url);
+            var thumb = data.thumbnail_url;
+            var new_height= 48;
+            var img_resize = "http://i.embed.ly/1/display/resize?"
+            img_resize+="url=";
+            img_resize+=encodeURIComponent(thumb);
+            img_resize+="&grow=true&key=e2dcb7bae5a443bfbb5f726daf05549f&height="
+            img_resize+=new_height;
+
+            that.model.set('thumbnail', img_resize);
 
             window.BOKASHAKA = that.model;
 			player.getDuration(function(value) {
@@ -88,7 +96,7 @@ ClipPlay.Views.Sample = Marionette.ItemView.extend({
 
     remove_sample: function(){
         this.collection.remove(this.model);
-        
+
         var $iframe_video = $('#video-sample-' + this.model.cid);
         $iframe_video.fadeOut(400, function() {
         	$iframe_video.remove();

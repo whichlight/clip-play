@@ -19,6 +19,7 @@ header {
 
 #samples {
 	margin: 3em 0;
+    z-index:1;
 }
 
 
@@ -115,6 +116,7 @@ header {
 
 /* . Buttons . */
 .button {
+    z-index:1;
 	border-width: 1px;
 	border-style: solid;
 	cursor: pointer;
@@ -212,4 +214,5 @@ header {
   }
 
 .sample-media{
+    z-index: -1;
 }
