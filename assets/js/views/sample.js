@@ -56,6 +56,7 @@ ClipPlay.Views.Sample = Marionette.ItemView.extend({
 		
 		this.selected_bar = new ClipPlay.Views.SelectedBar({
 			el: this.$('.js-selected-bar'),
+			model: this.model,
 			sample_view: this
 		});
 	},

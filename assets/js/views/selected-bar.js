@@ -1,4 +1,9 @@
 ClipPlay.Views.SelectedBar = Marionette.View.extend({
+	events: {
+		'click': 'play'
+	},
+	
+	
 	initialize: function(options) {
 		this.setElement(options.el);
 		this.sample_view = options.sample_view;
@@ -32,6 +37,11 @@ ClipPlay.Views.SelectedBar = Marionette.View.extend({
 	// doesn't break.
 	reset_position: function() {
 		this.$el.css('position', 'absolute');
+	},
+	
+	
+	play: function() {
+		this.model.play();
 	},
 	
 	
