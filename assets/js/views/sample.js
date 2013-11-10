@@ -21,7 +21,7 @@ ClipPlay.Views.Sample = Marionette.ItemView.extend({
 			});
 			$('#video').append(iframe[0]);
 			var player = new OP.Player(iframe[0]);
-            window.player = player;
+            window.BOKASHAKA = that;
 			that.model.set('player', player);
 			that.model.set('iframe', iframe);
 

@@ -4,6 +4,7 @@ ClipPlay.App = new Marionette.Application();
 
 ClipPlay.App.addInitializer(function(options) {
 	var samples_collection = new ClipPlay.Collections.Samples();
+    window.SAMPLES = samples_collection;
 	var sample_editor_view = new ClipPlay.Views.SampleEditor({
 		collection: samples_collection
 	});
