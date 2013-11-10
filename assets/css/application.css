@@ -33,7 +33,7 @@ header {
 .key { /* http://cssdeck.com/labs/apple-keyboard-via-css3 */
 	display: block;
 	color: #aaa;
-	font: bold 9pt Helvetica, sans-serif;
+	font: bold 18pt Helvetica, sans-serif;
 	text-decoration: none;
 	text-align: center;
 	width: 44px;
@@ -63,6 +63,10 @@ header {
 
 .key-input {
 	border: none;
+}
+
+.key-input:hover {
+	background: #dddee0;
 }
 
 
