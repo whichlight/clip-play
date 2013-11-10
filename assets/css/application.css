@@ -23,16 +23,14 @@ header {
 
 
 footer {
-	position: absolute;
-	bottom: 1em;
+	position: fixed;
+	bottom: 0;
+	z-index: 6;
 	font-size: 13px;
 	font-family: 'Lucida Grande', Helvetica, sans-serif;
-	-webkit-transform: rotate(-90deg);
-	-moz-transform: rotate(-90deg);
-	-ms-transform: rotate(-90deg);
-	filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=3);
-	-o-transform: rotate(-90deg);
-	transform: rotate(-90deg);
+	background: url('../images/background.png') repeat;
+	padding: 1em 0;
+	width: 100%;
 }
 
 
