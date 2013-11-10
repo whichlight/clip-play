@@ -32,6 +32,7 @@ ClipPlay.Views.Sample = Marionette.ItemView.extend({
 			var player = new OP.Player(iframe[0]);
 			that.model.set('player', player);
 			that.model.set('iframe', iframe);
+            that.model.set('thumbnail', data.thumbnail_url);
 
             window.BOKASHAKA = that.model;
 			player.getDuration(function(value) {
