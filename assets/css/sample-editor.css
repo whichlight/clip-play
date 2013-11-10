@@ -13,7 +13,7 @@
 
 .progress-bar {
 	border: 1px solid #b9b9b9;
-	width: 90%;
+	width: 80%;
 	height: 3em;
 	position: relative;
 	background-color: #ddd;
@@ -28,6 +28,14 @@
 	width: 1px;
 	height: 3em;
 	background-color: #797979;
+}
+
+.clip-line-start {
+	left: 55px;
+}
+
+.clip-line-stop {
+	left: 58px;
 }
 
 .drag-handle {
@@ -101,4 +109,11 @@
 /* Key input */
 .edit-sample .key-input {
 	margin-top: 0.1em;
+}
+
+
+/* Thumbnail */
+.thumbnail-image {
+	height: 3em;
+	vertical-align: middle;
 }
