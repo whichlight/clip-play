@@ -1,0 +1,1 @@
+ClipPlay.Models.Sample = Backbone.Model.extend({});
