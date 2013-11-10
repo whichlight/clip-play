@@ -2,22 +2,7 @@ ClipPlay.Views.SampleEditor = Marionette.CollectionView.extend({
 	itemView: ClipPlay.Views.Sample,
 	
 	initialize: function() {
-		this.initialize_clip_drag_handles();
 		this.initialize_player();
-	},
-	
-	
-	initialize_clip_drag_handles: function() {
-		var $clip_line = $('.js-clip-line');
-		
-		$clip_line.draggable({
-			axis: 'x',
-			handle: '.js-drag-handle',
-			scroll: false,
-			containment: $clip_line.parents('.progress-bar')
-		});
-		
-		$clip_line.on('drag', this.on_clip_drag_stop);
 	},
 	
 	
@@ -33,10 +18,5 @@ ClipPlay.Views.SampleEditor = Marionette.CollectionView.extend({
 			el: $('#add-sample'),
 			collection: this.collection
 		});
-	},
-	
-	
-	on_clip_drag_stop: function(e, ui) {
-		
 	}
 });
