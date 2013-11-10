@@ -23,6 +23,12 @@ ClipPlay.Views.Sample = Marionette.ItemView.extend({
 			var player = new OP.Player(iframe[0]);
 			that.model.set('player', player);
 			that.model.set('iframe', iframe);
+			
+			// Trying to get the duration but this returns 0 for some reason 
+			// on the YouTube video I'm testing with
+			player.getDuration(function(value) {
+				that.model.set('duration', value);
+			});
 		});
 	},
 	
