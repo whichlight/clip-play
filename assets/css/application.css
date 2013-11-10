@@ -5,7 +5,7 @@
 /* . Layout . */
 body {
 	background: url('../images/background.png') repeat;
-	padding: 0 2em;
+	padding: 0 2.8em;
 }
 
 
@@ -17,7 +17,7 @@ header {
 
 
 #samples {
-	margin: 3em 2em;
+	margin: 3em 0;
 }
 
 
