@@ -10,15 +10,23 @@
 	<meta name="viewport" content="width=device-width">
 
 	<link rel="stylesheet" href="/assets/css/reset.css" />
+	<link rel="stylesheet" href="/assets/fonts/itsadokes.css" />
+	<link rel="stylesheet" href="/assets/fonts/neoretro-draw.css" />
+	<link rel="stylesheet" href="/assets/fonts/seaside-resort.css" />
+	<link rel="stylesheet" href="/assets/fonts/znikomitno.css" />
 	<link rel="stylesheet" href="/assets/css/application.css" />
 	<link rel="stylesheet" href="/assets/css/sample-editor.css" />
 </head>
 <body>
+	<header>
+		<h1>ClipPlay</h1>
+	</header>
+	
 	<div role="main">
 		<div id="add-sample">
 			<form action="" method="get">
-				<input type="text" class="js-sample-url" placeholder="Video URL" />
-				<button type="button" class="js-create-sample">+</button>
+				<input type="text" class="url-input js-sample-url" placeholder="http://www.youtube.com/watch?v=_JGaQ3g8WU4" />
+				<button type="button" class="button green large js-create-sample">+</button>
 			</form>
 		</div>
 
@@ -42,22 +50,22 @@
 		<div class="edit-sample js-edit-sample">
 			<div class="progress-bar">
 				<div class="clip-line js-clip-line js-start-position">
-					<div class="drag-handle js-drag-handle">
-						<span class="js-time"></span>
+					<div class="drag-handle start-drag-handle js-drag-handle">
+						<span class="clip-time js-time"></span>
 					</div>
 				</div>
 				
 				<div class="selected-bar js-selected-bar"></div>
 
 				<div class="clip-line js-clip-line js-end-position">
-					<div class="drag-handle js-drag-handle">
+					<div class="drag-handle stop-drag-handle js-drag-handle">
 						<span class="js-time"></span>
 					</div>
 				</div>
 			</div>
 
 			<div>
-				<input type="text" class="js-keyboard-key" placeholder="a" />
+				<input type="text" class="key key-input js-keyboard-key" placeholder="a" />
 			</div>
 		</div>
 	</script>
