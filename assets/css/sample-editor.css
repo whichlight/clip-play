@@ -1,6 +1,10 @@
 /* Sample Editor */
 /* Progress bars and inputs to create & edit samples */
 
+.edit-sample {
+	margin: 0.4em 0;
+}
+
 .edit-sample > div {
 	display: inline-block;
 	vertical-align: middle;
