@@ -1,6 +1,11 @@
 /* Application */
 /* General global styles */
 
+body {
+	background: url('../images/background.png') repeat;
+}
+
+
 #samples {
 	margin: 3em 2em;
 }
