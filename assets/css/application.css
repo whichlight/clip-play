@@ -1,8 +1,18 @@
 /* Application */
 /* General global styles */
 
+
+/* . Layout . */
 body {
 	background: url('../images/background.png') repeat;
+	padding: 0 2em;
+}
+
+
+header {
+	font-family: neoretrodrawregular, znikomitno24regular, seasideresortnfregular, itsadzokes01regular, sans-serif;
+	font-size: 80px;
+	margin: 0.2em 0 0.4em;
 }
 
 
