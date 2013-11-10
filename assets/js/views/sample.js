@@ -28,7 +28,8 @@ ClipPlay.Views.Sample = Marionette.ItemView.extend({
 			var schema = data.provider_name.toLowerCase();
 			var iframe_src= BASE_IFRAME +"?schema="+schema+"&type=text%2Fhtml&html="+src;
 			var iframe = $('<iframe/>', {
-				src: iframe_src
+				src: iframe_src,
+				id: 'video-sample-' + that.model.cid
 			});
 			$('#video').append(iframe[0]);
 			var player = new OP.Player(iframe[0]);
@@ -84,6 +85,11 @@ ClipPlay.Views.Sample = Marionette.ItemView.extend({
 
     remove_sample: function(){
         this.collection.remove(this.model);
+        
+        var $iframe_video = $('#video-sample-' + this.model.cid);
+        $iframe_video.fadeOut(400, function() {
+        	$iframe_video.remove();
+        });
     },
 
 	close: function() {
