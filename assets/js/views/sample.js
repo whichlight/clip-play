@@ -25,8 +25,6 @@ ClipPlay.Views.Sample = Marionette.ItemView.extend({
 			that.model.set('player', player);
 			that.model.set('iframe', iframe);
 
-			// Trying to get the duration but this returns 0 for some reason
-			// on the YouTube video I'm testing with
 			player.getDuration(function(value) {
 				that.model.set('duration', value);
 			});
@@ -35,11 +33,13 @@ ClipPlay.Views.Sample = Marionette.ItemView.extend({
 
 	initialize_clip_lines: function() {
 		this.start_clip_line = new ClipPlay.Views.ClipLine({
+			type: 'start',
 			el: this.$('.js-start-position'),
 			model: this.model
 		});
 
 		this.end_clip_line = new ClipPlay.Views.ClipLine({
+			type: 'stop',
 			el: this.$('.js-end-position'),
 			model: this.model
 		});
