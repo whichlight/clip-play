@@ -113,6 +113,12 @@
 
 
 /* Thumbnail */
+.thumbnail {
+	height: 3em;
+	width: 4em;
+	overflow: hidden;
+}
+
 .thumbnail-image {
 	height: 3em;
 	vertical-align: middle;
